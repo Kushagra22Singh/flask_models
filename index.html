@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Model</title>
+    </head>
+    <body style="background-color:powderblue;">
+        <div>
+            <h1 style="color: rebeccapurple; font-family: courier; font-size:
+                300%; text-align:center;">
+                <b>
+                    MODEL TO PREDICT THE FLOWERS SPECIES
+                </b>
+            </h1>
+        </div>
+        <div>
+            <form action="{{ url_for('predict')}}" method="POST">
+                <div style="display: flex; justify-content: center;">
+                    <input type="text" name="Sepal_Length"
+                        placeholder="Sepal_Length" required="required" />
+                    <input type="text" name="Sepal_Width"
+                        placeholder="Sepal_Width" required="required" />
+                    <input type="text" name="Petal_Length"
+                        placeholder="Petal_Length" required="required" />
+                    <input type="text" name="Petal_Width"
+                        placeholder="Petal_Width" required="required" />
+                </div>
+                <div style="display: flex; justify-content: center;">
+                    <button type="submit" style="margin-top: 8px; font-size:
+                        22px;">Predict</button>
+                </div>
+            </form>
+            <br>
+            <br>
+            <div style="display: flex; justify-content: center; margin-top:
+                10px; color: rgb(35, 6, 227); font-size: 38px; font-weight:
+                bolder;font-style: italic; font-family: 'Arial', sans-serif;">
+                {{ prediction_text }}
+            </div>
+
+            <div style="display: flex; justify-content: center; align-items:
+                center; height: 70vh;">
+                {% if 'Iris-virginica' in prediction_text %}
+                <div class="centered-image-container">
+                    <img
+                        src="https://www.fs.usda.gov/wildflowers/beauty/iris/Blue_Flag/images/iris_virginica/iris_virginica_virginica_lg.jpg"
+                        alt="Species 1" style="width: 300px; height: 300px;
+                        margin-top: 30px; margin-bottom: 130px;">
+                </div>
+                {% elif 'Iris-setosa' in prediction_text %}
+                <div class="centered-image-container">
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Irissetosa1.jpg"
+                        alt="Species 2" style="width: 400px; height: 310px;
+                        margin-top: 30px; margin-bottom: 130px;">
+                </div>
+                {% elif 'Iris-versicolor' in prediction_text %}
+                <div class="centered-image-container">
+                    <img
+                        src="https://i.etsystatic.com/11300650/r/il/23fbbf/1171633447/il_570xN.1171633447_8s97.jpg"
+                        alt="Species 3" style="width: 300px; height: 300px;
+                        margin-top: 30px; margin-bottom: 130px;">
+                </div>
+                {% else %}
+                <p>No image available</p>
+                {% endif %}
+            </div>
+
+        </div>
+
+    </body>
+</html>
