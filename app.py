@@ -4,7 +4,7 @@ import pickle
 
 import mysql.connector as c 
 
-con=c.connect(host='localhost',user='root',passwd='argahsuk@hgnis',database='flask_models')
+con=c.connect(host='localhost',user='root',passwd='your_password',database='your_DB')
 cursor=con.cursor()
 
 # Create flask app
